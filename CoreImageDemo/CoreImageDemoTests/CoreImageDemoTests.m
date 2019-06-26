@@ -5,8 +5,10 @@
 //  Created by fumi on 2019/6/25.
 //  Copyright © 2019 rayor. All rights reserved.
 //
-
 #import <XCTest/XCTest.h>
+#import "FilterViewController.h"
+
+//@testable CoreImageDemo;
 
 @interface CoreImageDemoTests : XCTestCase
 
@@ -29,8 +31,11 @@
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
+    FilterViewController *vc = [[FilterViewController alloc] init];
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        for (int i = 0; i < 50; i++) {
+            [vc getImageFromContext];
+        }
     }];
 }
 

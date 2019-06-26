@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface FilterViewController : UIViewController
+/** 单元测试使用 */
+- (UIImage *)getImageFromRender;
+- (UIImage *)getImageFromContext;
 @end
 

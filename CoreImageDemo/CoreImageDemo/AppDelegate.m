@@ -5,7 +5,7 @@
 //  Created by fumi on 2019/6/25.
 //  Copyright © 2019 rayor. All rights reserved.
 //
-
+#import <ImageIO/ImageIO.h>
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
