@@ -9,7 +9,10 @@
 #import "ViewController.h"
 #import <ImageIO/ImageIO.h>
 
-@interface ViewController ()
+@interface ViewController (){
+	/** 增长 */
+	CGImageSourceRef _incrementImageSource;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
@@ -28,11 +31,34 @@
 
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://pic37.nipic.com/20140113/8800276_184927469000_2.png"]];
-    CGImageRef img = myCreateThumbnailImageFromData(data, 10000);
-    UIImage *image = [UIImage imageWithCGImage:img];
-    NSLog(@"%@",image);
-    self.imageView.image = image;
-    fprintf(stdout, "成功打印");
+//    CGImageRef img = myCreateThumbnailImageFromData(data, 10000);
+//    UIImage *image = [UIImage imageWithCGImage:img];
+//    NSLog(@"%@",image);
+//    self.imageView.image = image;
+//    fprintf(stdout, "成功打印");
+	_incrementImageSource = CGImageSourceCreateIncremental(NULL);
+	
+	
+	NSUInteger end = 100;
+	while (end <= data.length) {
+	NSData *subData = [data subdataWithRange:NSMakeRange(0, end)];
+		[self appendData:subData finished:end==data.length];
+		
+		if (end == data.length) {
+			break;
+		}
+		
+		
+		if (data.length - end > 100) {
+			end += 100;
+		} else {
+			end = data.length;
+		}
+		
+	}
+	/** 创建可憎变量 */
+	
+	
 //    [self showTypes];
 }
 
@@ -144,5 +170,15 @@ CGImageRef myCreateThumbnailImageFromData(NSData * data, int imageSize) {
     
     return NULL;
 }
+
+- (void)appendData:(NSData *)data finished:(BOOL)isFinished {
+	
+	CGImageSourceUpdateData(_incrementImageSource, (CFDataRef)data, isFinished);
+	
+	CGImageRef imageRef = CGImageSourceCreateImageAtIndex(_incrementImageSource, 0, NULL);
+	self.imageView.image = [UIImage imageWithCGImage:imageRef];
+	CGImageRelease(imageRef);
+}
+
 
 @end
