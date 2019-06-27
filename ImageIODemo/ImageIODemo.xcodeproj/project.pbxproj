@@ -15,6 +15,10 @@
 		B34520F722C3715800DE6867 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B34520F622C3715800DE6867 /* main.m */; };
 		B345210122C3715800DE6867 /* ImageIODemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B345210022C3715800DE6867 /* ImageIODemoTests.m */; };
 		B345210C22C3715900DE6867 /* ImageIODemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B345210B22C3715900DE6867 /* ImageIODemoUITests.m */; };
+		B345211C22C458AB00DE6867 /* CustomMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B345211B22C458AB00DE6867 /* CustomMonitor.m */; };
+		B345211F22C4950600DE6867 /* ImagesShowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B345211E22C4950600DE6867 /* ImagesShowController.m */; };
+		B3C7607622C4967C00545B98 /* ImagesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C7607522C4967C00545B98 /* ImagesCollectionViewCell.m */; };
+		B3C7607D22C4B99D00545B98 /* ImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C7607C22C4B99D00545B98 /* ImageCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		B345210722C3715900DE6867 /* ImageIODemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageIODemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B345210B22C3715900DE6867 /* ImageIODemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageIODemoUITests.m; sourceTree = "<group>"; };
 		B345210D22C3715900DE6867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B345211A22C458AB00DE6867 /* CustomMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomMonitor.h; sourceTree = "<group>"; };
+		B345211B22C458AB00DE6867 /* CustomMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomMonitor.m; sourceTree = "<group>"; };
+		B345211D22C4950600DE6867 /* ImagesShowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagesShowController.h; sourceTree = "<group>"; };
+		B345211E22C4950600DE6867 /* ImagesShowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagesShowController.m; sourceTree = "<group>"; };
+		B3C7607422C4967C00545B98 /* ImagesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagesCollectionViewCell.h; sourceTree = "<group>"; };
+		B3C7607522C4967C00545B98 /* ImagesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagesCollectionViewCell.m; sourceTree = "<group>"; };
+		B3C7607B22C4B99D00545B98 /* ImageCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheManager.h; sourceTree = "<group>"; };
+		B3C7607C22C4B99D00545B98 /* ImageCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +113,17 @@
 		B34520E622C3715800DE6867 /* ImageIODemo */ = {
 			isa = PBXGroup;
 			children = (
-				B34520E722C3715800DE6867 /* AppDelegate.h */,
-				B34520E822C3715800DE6867 /* AppDelegate.m */,
+				B3C7607722C4A5E900545B98 /* Support */,
+				B345211922C4588C00DE6867 /* Monitor */,
 				B34520EA22C3715800DE6867 /* ViewController.h */,
 				B34520EB22C3715800DE6867 /* ViewController.m */,
 				B34520ED22C3715800DE6867 /* Main.storyboard */,
-				B34520F022C3715800DE6867 /* Assets.xcassets */,
-				B34520F222C3715800DE6867 /* LaunchScreen.storyboard */,
-				B34520F522C3715800DE6867 /* Info.plist */,
-				B34520F622C3715800DE6867 /* main.m */,
+				B345211D22C4950600DE6867 /* ImagesShowController.h */,
+				B345211E22C4950600DE6867 /* ImagesShowController.m */,
+				B3C7607422C4967C00545B98 /* ImagesCollectionViewCell.h */,
+				B3C7607522C4967C00545B98 /* ImagesCollectionViewCell.m */,
+				B3C7607B22C4B99D00545B98 /* ImageCacheManager.h */,
+				B3C7607C22C4B99D00545B98 /* ImageCacheManager.m */,
 			);
 			path = ImageIODemo;
 			sourceTree = "<group>";
@@ -130,6 +144,28 @@
 				B345210D22C3715900DE6867 /* Info.plist */,
 			);
 			path = ImageIODemoUITests;
+			sourceTree = "<group>";
+		};
+		B345211922C4588C00DE6867 /* Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				B345211A22C458AB00DE6867 /* CustomMonitor.h */,
+				B345211B22C458AB00DE6867 /* CustomMonitor.m */,
+			);
+			path = Monitor;
+			sourceTree = "<group>";
+		};
+		B3C7607722C4A5E900545B98 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B34520E722C3715800DE6867 /* AppDelegate.h */,
+				B34520E822C3715800DE6867 /* AppDelegate.m */,
+				B34520F022C3715800DE6867 /* Assets.xcassets */,
+				B34520F222C3715800DE6867 /* LaunchScreen.storyboard */,
+				B34520F522C3715800DE6867 /* Info.plist */,
+				B34520F622C3715800DE6867 /* main.m */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C7607D22C4B99D00545B98 /* ImageCacheManager.m in Sources */,
+				B3C7607622C4967C00545B98 /* ImagesCollectionViewCell.m in Sources */,
 				B34520EC22C3715800DE6867 /* ViewController.m in Sources */,
+				B345211C22C458AB00DE6867 /* CustomMonitor.m in Sources */,
 				B34520F722C3715800DE6867 /* main.m in Sources */,
+				B345211F22C4950600DE6867 /* ImagesShowController.m in Sources */,
 				B34520E922C3715800DE6867 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -423,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -438,6 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8Z9C7T6GY;
 				INFOPLIST_FILE = ImageIODemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8Z9C7T6GY;
 				INFOPLIST_FILE = ImageIODemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

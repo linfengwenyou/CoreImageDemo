@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <ImageIO/ImageIO.h>
+#import "CustomMonitor.h"
 
 @interface ViewController (){
 	/** 增长 */
@@ -21,47 +22,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//        CGImageRef img = MyCreateCGImageFromFile(@"http://pic37.nipic.com/20140113/8800276_184927469000_2.png");
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.imageView.image = [UIImage imageWithCGImage:img];
-//        });
-//    });
+    self.title = @"ImageI/O图片加载";
 
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://pic37.nipic.com/20140113/8800276_184927469000_2.png"]];
-//    CGImageRef img = myCreateThumbnailImageFromData(data, 10000);
-//    UIImage *image = [UIImage imageWithCGImage:img];
-//    NSLog(@"%@",image);
-//    self.imageView.image = image;
-//    fprintf(stdout, "成功打印");
-	_incrementImageSource = CGImageSourceCreateIncremental(NULL);
-	
-	
-	NSUInteger end = 100;
-	while (end <= data.length) {
-	NSData *subData = [data subdataWithRange:NSMakeRange(0, end)];
-		[self appendData:subData finished:end==data.length];
-		
-		if (end == data.length) {
-			break;
-		}
-		
-		
-		if (data.length - end > 100) {
-			end += 100;
-		} else {
-			end = data.length;
-		}
-		
-	}
-	/** 创建可憎变量 */
-	
-	
-//    [self showTypes];
+//    NSLog(@"%@",[[CustomMonitor alloc] init]);
+//     NSLog(@"%@",[[CustomMonitor alloc] init]);
+//     NSLog(@"%@",[[CustomMonitor alloc] init]);
+    NSLog(@"%@",[CustomMonitor shareMonitor]);
+    NSLog(@"%@",[CustomMonitor new]);
+    
+    CustomMonitor.shareMonitor.cpuUsageAction = ^(NSString * _Nonnull cpuUsage) {
+        NSLog(@"CPU使用情况---: %@",cpuUsage);
+    };
+    
+    CustomMonitor.shareMonitor.memoryUsageAction = ^(NSString * _Nonnull memUsage) {
+        NSLog(@"Memory使用情况---: %@",memUsage);
+    };
+    
+    [[CustomMonitor shareMonitor] startMonitor];
+    
+    
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    return;
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    //        CGImageRef img = MyCreateCGImageFromFile(@"http://pic37.nipic.com/20140113/8800276_184927469000_2.png");
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            self.imageView.image = [UIImage imageWithCGImage:img];
+    //        });
+    //    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://img.mp.itc.cn/upload/20170713/446e5132e87844a6a50fe98ba23320be_th.jpg"]];
+        [self testIncraseData:data];
+    });
+    
+    
+    /** 加载缩略图 */
+    //    CGImageRef img = myCreateThumbnailImageFromData(data, 100);
+    //    UIImage *image = [UIImage imageWithCGImage:img];
+    //    self.imageView.image = image;
+    //    fprintf(stdout, "成功打印");
+    
+    /** 打印支持UTI */
+    //    [self showTypes];
+}
 
 - (void)showTypes {
     CFArrayRef mySourceTypes = CGImageSourceCopyTypeIdentifiers();
@@ -167,17 +174,43 @@ CGImageRef myCreateThumbnailImageFromData(NSData * data, int imageSize) {
     
     return myThumbnailImage;
     
+}
+
+/** 测试增量图片处理 */
+- (void)testIncraseData:(NSData *)data {
     
-    return NULL;
+    _incrementImageSource = CGImageSourceCreateIncremental(NULL);
+    
+    NSUInteger end = 1000;
+    while (end <= data.length) {
+        NSData *subData = [data subdataWithRange:NSMakeRange(0, end)];
+        [self appendData:subData finished:end==data.length];
+        
+        if (end == data.length) {
+            break;
+        }
+        
+        
+        if (data.length - end > 1000) {
+            end += 1000;
+        } else {
+            end = data.length;
+        }
+        
+    }
 }
 
 - (void)appendData:(NSData *)data finished:(BOOL)isFinished {
 	
 	CGImageSourceUpdateData(_incrementImageSource, (CFDataRef)data, isFinished);
-	
-	CGImageRef imageRef = CGImageSourceCreateImageAtIndex(_incrementImageSource, 0, NULL);
-	self.imageView.image = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(_incrementImageSource, 0, NULL);
+
+    if (CGImageSourceGetStatus(_incrementImageSource) == kCGImageStatusComplete) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageView.image = [UIImage imageWithCGImage:imageRef];
+        });        
+    }
+    CGImageRelease(imageRef);
 }
 
 
