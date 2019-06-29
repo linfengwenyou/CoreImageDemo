@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        return UICollectionViewCell()
     }
     
     
@@ -39,10 +39,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             searialQueue.async {
-                let downsampledImage = downsample("https://wwwwimage.png")
-                DispatchQueue.main.async {
-                    self.update()
-                }
+//                let downsampledImage = downsample("https://wwwwimage.png")
+//                DispatchQueue.main.async {
+//                    self.update()
+//                }
             }
         }
     }
