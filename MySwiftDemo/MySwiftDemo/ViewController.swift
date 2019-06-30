@@ -61,22 +61,37 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 		
 		print("this is start", Thread.current)
 		
-		queue.async {
-			print("this is a test", Thread.current)
-		}
+	
+		var s = Set<String>()
 		
-		queue.async {
-			print("this is a test", Thread.current)
-		}
-		queue.async {
-			print("this is a test", Thread.current)
-		}
-		queue.async {
-			print("this is a test", Thread.current)
+		let lock = NSLock.init()
+		
+		for i in 0...20 {
+			
+			
+			queue.async {
+				let td = Thread.current
+				if td.name == nil || td.name?.count ?? 0 == 0 {
+					td.name = "Thread \(i)"
+				}
+				lock.lock()
+				if !s.contains(td.name!) {
+					s.insert(td.name!)
+				}
+				lock.unlock()
+				print("this is a test \(i)", Thread.current, "total threads:\(s.count)")
+				if i % 2 == 0 {
+					queue.async {
+						sleep(10)
+					}
+				}
+				
+				
+			}
+			
 		}
 		
 		print("this is finish", Thread.current)
-		
     }
 
 }
