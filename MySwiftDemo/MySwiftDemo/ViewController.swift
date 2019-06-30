@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -55,9 +56,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+		
+		let queue = DispatchQueue.init(label: "com.kang.song",attributes:.concurrent)
+		
+		print("this is start", Thread.current)
+		
+		queue.async {
+			print("this is a test", Thread.current)
+		}
+		
+		queue.async {
+			print("this is a test", Thread.current)
+		}
+		queue.async {
+			print("this is a test", Thread.current)
+		}
+		queue.async {
+			print("this is a test", Thread.current)
+		}
+		
+		print("this is finish", Thread.current)
+		
     }
-
 
 }
 
