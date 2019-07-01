@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		B3734F9322C5C4BA00686C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3734F9222C5C4BA00686C8F /* AppDelegate.swift */; };
 		B3734F9522C5C4BA00686C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3734F9422C5C4BA00686C8F /* ViewController.swift */; };
-		B3734F9822C5C4BA00686C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3734F9622C5C4BA00686C8F /* Main.storyboard */; };
 		B3734F9A22C5C4BC00686C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3734F9922C5C4BC00686C8F /* Assets.xcassets */; };
 		B3734F9D22C5C4BC00686C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3734F9B22C5C4BC00686C8F /* LaunchScreen.storyboard */; };
 		B3734FA822C5C4BC00686C8F /* MySwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3734FA722C5C4BC00686C8F /* MySwiftDemoTests.swift */; };
 		B3734FB322C5C4BC00686C8F /* MySwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3734FB222C5C4BC00686C8F /* MySwiftDemoUITests.swift */; };
+		B3734FC322C99B3C00686C8F /* TestOC.m in Sources */ = {isa = PBXBuildFile; fileRef = B3734FC222C99B3C00686C8F /* TestOC.m */; };
+		B3734FC822C9F8BD00686C8F /* RunLoopMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3734FC722C9F8BD00686C8F /* RunLoopMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 		B3734F8F22C5C4BA00686C8F /* MySwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3734F9222C5C4BA00686C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3734F9422C5C4BA00686C8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B3734F9722C5C4BA00686C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3734F9922C5C4BC00686C8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3734F9C22C5C4BC00686C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3734F9E22C5C4BC00686C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +47,10 @@
 		B3734FAE22C5C4BC00686C8F /* MySwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3734FB222C5C4BC00686C8F /* MySwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwiftDemoUITests.swift; sourceTree = "<group>"; };
 		B3734FB422C5C4BC00686C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3734FC022C99B3C00686C8F /* MySwiftDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySwiftDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B3734FC122C99B3C00686C8F /* TestOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOC.h; sourceTree = "<group>"; };
+		B3734FC222C99B3C00686C8F /* TestOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOC.m; sourceTree = "<group>"; };
+		B3734FC722C9F8BD00686C8F /* RunLoopMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoopMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,13 @@
 			children = (
 				B3734F9222C5C4BA00686C8F /* AppDelegate.swift */,
 				B3734F9422C5C4BA00686C8F /* ViewController.swift */,
-				B3734F9622C5C4BA00686C8F /* Main.storyboard */,
 				B3734F9922C5C4BC00686C8F /* Assets.xcassets */,
 				B3734F9B22C5C4BC00686C8F /* LaunchScreen.storyboard */,
 				B3734F9E22C5C4BC00686C8F /* Info.plist */,
+				B3734FC122C99B3C00686C8F /* TestOC.h */,
+				B3734FC222C99B3C00686C8F /* TestOC.m */,
+				B3734FC022C99B3C00686C8F /* MySwiftDemo-Bridging-Header.h */,
+				B3734FC722C9F8BD00686C8F /* RunLoopMonitor.swift */,
 			);
 			path = MySwiftDemo;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 				TargetAttributes = {
 					B3734F8E22C5C4BA00686C8F = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 					B3734FA222C5C4BC00686C8F = {
 						CreatedOnToolsVersion = 10.2;
@@ -231,7 +239,6 @@
 			files = (
 				B3734F9D22C5C4BC00686C8F /* LaunchScreen.storyboard in Resources */,
 				B3734F9A22C5C4BC00686C8F /* Assets.xcassets in Resources */,
-				B3734F9822C5C4BA00686C8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,8 @@
 			files = (
 				B3734F9522C5C4BA00686C8F /* ViewController.swift in Sources */,
 				B3734F9322C5C4BA00686C8F /* AppDelegate.swift in Sources */,
+				B3734FC822C9F8BD00686C8F /* RunLoopMonitor.swift in Sources */,
+				B3734FC322C99B3C00686C8F /* TestOC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +302,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B3734F9622C5C4BA00686C8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3734F9722C5C4BA00686C8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B3734F9B22C5C4BC00686C8F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -432,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8Z9C7T6GY;
 				INFOPLIST_FILE = MySwiftDemo/Info.plist;
@@ -441,6 +443,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.song.MySwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MySwiftDemo/MySwiftDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -450,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C8Z9C7T6GY;
 				INFOPLIST_FILE = MySwiftDemo/Info.plist;
@@ -459,6 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.song.MySwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MySwiftDemo/MySwiftDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

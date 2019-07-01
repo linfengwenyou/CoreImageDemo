@@ -53,46 +53,52 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         
     }
-
+    var index = 0
+    var timer:Timer?
+    var a:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		let queue = DispatchQueue.init(label: "com.kang.song",attributes:.concurrent)
-		
-		print("this is start", Thread.current)
-		
-	
-		var s = Set<String>()
-		
-		let lock = NSLock.init()
-		
-		for i in 0...20 {
-			
-			
-			queue.async {
-				let td = Thread.current
-				if td.name == nil || td.name?.count ?? 0 == 0 {
-					td.name = "Thread \(i)"
-				}
-				lock.lock()
-				if !s.contains(td.name!) {
-					s.insert(td.name!)
-				}
-				lock.unlock()
-				print("this is a test \(i)", Thread.current, "total threads:\(s.count)")
-				if i % 2 == 0 {
-					queue.async {
-						sleep(10)
-					}
-				}
-				
-				
-			}
-			
-		}
-		
-		print("this is finish", Thread.current)
-    }
+    
+        self.view.backgroundColor = UIColor.white
+//        runloopMonitor()
+        
+        let queue = DispatchQueue.init(label: "com.kang.song",attributes:[])
 
+        print("this is start", Thread.current)
+
+        queue.sync {
+            print("this is a sync test", Thread.current)
+        }
+
+        queue.async {
+            runloopMonitor()
+            let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { (timer) in
+                print("timer value ---")
+            })
+            
+            RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+            
+            let timer1 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+                print("timer1 value ---")
+            })
+            
+            RunLoop.current.add(timer1, forMode: RunLoop.Mode.common)
+            
+            RunLoop.current.run(until: Date.init(timeInterval: 10, since: Date.init()))
+            
+            
+            print("this is a sync test", Thread.current)
+        }
+
+        print("this is finish", Thread.current)
+    }
+    
+    
+    @objc func testDemo() {
+        print("this is a test", Thread.current)
+    }
+    
+    
+    
 }
 
