@@ -10,14 +10,57 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
 	
+	let waterLayout = ImageWaterfallLayout()
+	
+	lazy var collectionView:UICollectionView = {
+		let collectionView = UICollectionView.init(frame: UIScreen.main.bounds, collectionViewLayout:self.waterLayout)
+		collectionView.backgroundColor = UIColor.white
+		return collectionView
+	}()
+	
+	lazy var images:[UIImage] = {
+		var images = [UIImage]()
+		for i in 1..<1000 {
+			if let image = UIImage.init(named: "\(i)") {
+				images.append(image)
+			}
+		}
+		return images
+	}()
+	
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		self.view.backgroundColor = UIColor.white
+		
+		self.view.addSubview(self.collectionView)
+		
+		self.registerCell()
+		self.collectionView.delegate = self
+		self.collectionView.dataSource = self
+		
+		
+		self.waterLayout.images = images;
+		
+	}
+	
+	func registerCell() {
+		self.collectionView.register(UINib.init(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
+	}
+	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as! ImageViewCell
+		cell.titleLabel.text = "\(indexPath.row)"
+		cell.picView.image = self.images[indexPath.row]
+		cell.backgroundColor = UIColor.red
+		return cell
     }
-    
+	
     
     func downsample(imageAt imageURL:URL, to pointSize:CGSize, scale:CGFloat) -> UIImage {
         let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
@@ -53,9 +96,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         
     }
+	
+	
+	
+	/*
     var index = 0
     var timer:Timer?
     var a:Int = 0
+	
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -106,7 +154,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
 //        iamgeView.image = self.snapTwoImages(image1, image2: image2)
         var images = [UIImage]()
-        for i in 0...1000 {
+        for i in 1...1000 {
             if let image = UIImage.init(named: "\(i)") {
                 images.append(image)                
             }
@@ -193,6 +241,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("文件写入失败")
         }
     }
-    
+
+*/
 }
 
